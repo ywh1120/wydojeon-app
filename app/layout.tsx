@@ -15,18 +15,45 @@ const NAVIGATION: Navigation = [
   },
   {
     segment: '',
-    title: 'Dashboard',
+    title: 'WYD',
     icon: <DashboardIcon />,
   },
   {
-    segment: 'orders',
-    title: 'Orders',
+    segment: 'attend',
+    title: '봉사자출석',
     icon: <ShoppingCartIcon />,
+  },
+  {
+    segment: 'notice',
+    title: '공지사항',
+    icon: <ShoppingCartIcon />,
+  },
+  {
+    segment: 'qna',
+    title: 'Q&A',
+    icon: <ShoppingCartIcon />,
+  },
+  {
+    segment: 'admin',
+    title: '관리자메뉴',
+    icon: <ShoppingCartIcon />,
+    children: [
+      {
+        segment: 'attendlist',
+        title: '봉사자출석관리',
+        icon: <ShoppingCartIcon />,
+      },
+      {
+        segment: 'sendsms',
+        title: '알림문자전송',
+        icon: <ShoppingCartIcon />,
+      },
+    ],
   },
 ];
 
 const BRANDING = {
-  title: 'My Toolpad Core Next.js App',
+  title: '2027 World Youth Day 봉사자관리 프로그램',
 };
 
 

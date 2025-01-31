@@ -1,62 +1,105 @@
 import * as React from 'react';
 import { NextAppProvider } from '@toolpad/core/nextjs';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Dashboard, BackHand, Campaign, AdminPanelSettings, QuestionAnswer, Sms, Checklist } from '@mui/icons-material';
 import LinearProgress from '@mui/material/LinearProgress'
 import type { Navigation } from '@toolpad/core/AppProvider';
 
 import theme from '../theme';
 
-const NAVIGATION: Navigation = [
-  {
-    kind: 'header',
-    title: 'Main items',
-  },
-  {
-    segment: '',
-    title: 'WYD',
-    icon: <DashboardIcon />,
-  },
-  {
-    segment: 'attend',
-    title: '봉사자출석',
-    icon: <ShoppingCartIcon />,
-  },
-  {
-    segment: 'notice',
-    title: '공지사항',
-    icon: <ShoppingCartIcon />,
-  },
-  {
-    segment: 'qna',
-    title: 'Q&A',
-    icon: <ShoppingCartIcon />,
-  },
-  {
-    segment: 'admin',
-    title: '관리자메뉴',
-    icon: <ShoppingCartIcon />,
-    children: [
-      {
-        segment: 'attendlist',
-        title: '봉사자출석관리',
-        icon: <ShoppingCartIcon />,
-      },
-      {
-        segment: 'sendsms',
-        title: '알림문자전송',
-        icon: <ShoppingCartIcon />,
-      },
-    ],
-  },
-];
+let authority: String = 'admin'
+let NAVIGATION: Navigation = []
+
+if ( authority === 'admin' ){
+  NAVIGATION = [
+    {
+      kind: 'header',
+      title: 'WYD 2027',
+    },
+    {
+      segment: '',
+      title: 'WYD',
+      icon: <Dashboard />,
+    },
+    {
+      segment: 'attend',
+      title: '봉사자출석',
+      icon: <BackHand />,
+    },
+    {
+      segment: 'notice',
+      title: '공지사항',
+      icon: <Campaign />,
+    },
+    {
+      segment: 'qna',
+      title: 'Q&A',
+      icon: <QuestionAnswer />,
+    },
+    {
+      segment: 'admin',
+      title: '관리자메뉴',
+      icon: <AdminPanelSettings />,
+      children: [
+        {
+          segment: 'attendlist',
+          title: '봉사자출석관리',
+          icon: <Checklist />,
+        },
+        {
+          segment: 'sendsms',
+          title: '알림문자전송',
+          icon: <Sms />,
+        },
+      ],
+    },
+  ];
+}else if(authority = 'user'){
+  NAVIGATION = [
+    {
+      kind: 'header',
+      title: 'Main items',
+    },
+    {
+      segment: '',
+      title: 'WYD',
+      icon: <Dashboard />,
+    },
+    {
+      segment: 'attend',
+      title: '봉사자출석',
+      icon: <BackHand />,
+    },
+    {
+      segment: 'notice',
+      title: '공지사항',
+      icon: <Campaign />,
+    },
+    {
+      segment: 'qna',
+      title: 'Q&A',
+      icon: <QuestionAnswer />,
+    },
+    
+  ];
+}else{
+  NAVIGATION = [
+    {
+      kind: 'header',
+      title: 'Main items',
+    },
+    {
+      segment: '',
+      title: 'WYD',
+      icon: <Dashboard />,
+    },
+    
+  ];
+}
 
 const BRANDING = {
   title: '2027 World Youth Day 봉사자관리 프로그램',
 };
-
-
 
 export default function RootLayout(props: { children: React.ReactNode }) {
   

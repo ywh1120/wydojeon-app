@@ -1,4 +1,4 @@
-// File: /data/data/com.termux/files/home/project-code/wydojeon-app/app/(dashboard)/attend/page.tsx
+// File: C:\project-code\nextjs\wydojeon-app\app\(dashboard)\attend\page.tsx
 import * as entry from '../../../../../app/(dashboard)/attend/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

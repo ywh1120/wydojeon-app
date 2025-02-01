@@ -4,7 +4,6 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { Dashboard, BackHand, Campaign, AdminPanelSettings, QuestionAnswer, Sms, Checklist } from '@mui/icons-material';
 import LinearProgress from '@mui/material/LinearProgress'
 import type { Navigation } from '@toolpad/core/AppProvider';
-
 import theme from '../theme';
 
 let authority: String = 'admin'
@@ -105,7 +104,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
   
 
   return (
-    <html lang="en" data-toolpad-color-scheme="light" suppressHydrationWarning>
+    <html lang="ko" data-toolpad-color-scheme="light" suppressHydrationWarning>
       <body>
         
           <AppRouterCacheProvider options={{ enableCssLayer: true }}>

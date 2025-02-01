@@ -1,3 +1,4 @@
 {
-  "/(dashboard)/attend/page": "app/(dashboard)/attend/page.js"
+  "/(dashboard)/attend/page": "app/(dashboard)/attend/page.js",
+  "/(dashboard)/admin/attendlist/page": "app/(dashboard)/admin/attendlist/page.js"
 }

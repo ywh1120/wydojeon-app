@@ -10,6 +10,8 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { doc, setDoc, getDoc } from "@firebase/firestore";
 import dbmodule from "@/dbinfo/firebasedb";
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -46,6 +48,51 @@ function a11yProps(index: number) {
   };
 }
 
+function GetMemberData(){
+
+}
+
+const columns: GridColDef<(typeof rows)[number]>[] = [
+  { field: 'id', headerName: 'ID', width: 50 },
+  {
+    field: 'name',
+    headerName: '이름',
+    width: 150,
+    editable: true,
+  },
+  {
+    field: 'baptismal',
+    headerName: '세례명',
+    width: 150,
+    editable: true,
+  },
+  {
+    field: 'telno',
+    headerName: '전화번호',
+    width: 200,
+    editable: true,
+  },
+  {
+    field: 'makedate',
+    headerName: '참여날짜',    
+    width: 160,
+    editable: true,
+  },
+];
+
+const rows = [
+  { id: 1, name: '이원호', baptismal: '라우렌시오', telno: '010-1234-1234', makedate:'2024-02-04' },
+  { id: 2, name: '강승구', baptismal: '루카', telno: '010-1234-1234', makedate:'2024-02-04' },
+  { id: 3, name: '김미래', baptismal: '가브리엘라', telno: '010-1234-1234', makedate:'2024-02-04' },
+  { id: 4, name: '이원호', baptismal: '라우렌시오', telno: '010-1234-1234', makedate:'2024-02-04' },
+  { id: 5, name: 'Targaryen', baptismal: 'Daenerys', telno: '010-1234-1234', makedate:'2024-02-04' },
+  { id: 6, name: 'Melisandre', baptismal: null, telno: '010-1234-1234', makedate:'2024-02-04' },
+  { id: 7, name: 'Clifford', baptismal: 'Ferrara', telno: '010-1234-1234', makedate:'2024-02-04' },
+  { id: 8, name: 'Frances', baptismal: 'Rossini', telno: '010-1234-1234', makedate:'2024-02-04' },
+  { id: 9, name: 'Roxie', baptismal: 'Harvey', telno: '010-1234-1234', makedate:'2024-02-04' },
+];
+
+
 export default function BasicTabs() {
   let [attendstart, setAttendstart] = useState(false);
   let [attendend, setAttendend] = useState(false);
@@ -77,6 +124,9 @@ export default function BasicTabs() {
           setAttendstart(false)
           setAttendend(true)
         }
+      }else{
+        setAttendstart(false)
+        setAttendend(true)
       }
     }
     getdocument()
@@ -108,12 +158,28 @@ export default function BasicTabs() {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="봉사자 출석시작/종료" {...a11yProps(0)} />
-          <Tab label="봉사자 출석확인(성함별)" {...a11yProps(1)} />
-          <Tab label="봉사자 출석확인(날짜별)" {...a11yProps(2)} />
+          <Tab label="봉사자 명단" {...a11yProps(0)} />
+          <Tab label="봉사자 출석시작/종료" {...a11yProps(1)} />
+          <Tab label="봉사자 출석확인" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          initialState={{
+            pagination: {
+              paginationModel: {
+                pageSize: 5,
+              },
+            },
+          }}
+          pageSizeOptions={[5]}
+          checkboxSelection
+          disableRowSelectionOnClick
+        />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={1}>
         <form onSubmit={(event) => event.preventDefault()}>
           <Stack spacing={2}>
             <TextField id="outlined-basic" label="출석목적" onChange={textChange} variant="outlined" />
@@ -122,11 +188,8 @@ export default function BasicTabs() {
           </Stack>
         </form>
       </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        Item Two
-      </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Item Three
+        
       </CustomTabPanel>
     </Box>
   );

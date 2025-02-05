@@ -1,4 +1,4 @@
-// File: C:\project-code\nextjs\wydojeon-app\app\(dashboard)\qna\page.tsx
+// File: /data/data/com.termux/files/home/project-code/wydojeon-app/app/(dashboard)/qna/page.tsx
 import * as entry from '../../../../../app/(dashboard)/qna/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

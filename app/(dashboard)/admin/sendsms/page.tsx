@@ -7,7 +7,7 @@ export default function SendsmsPage() {
 
   return (
     <Typography>
-      Welcome to the Toolpad orders!
+      
     </Typography>
   );
 }

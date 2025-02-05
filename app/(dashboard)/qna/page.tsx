@@ -7,7 +7,7 @@ export default function QnaPage() {
 
   return (
     <Typography>
-      Welcome to the Toolpad orders!
+      qna페이지
     </Typography>
   );
 }

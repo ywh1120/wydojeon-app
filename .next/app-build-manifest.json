@@ -10,16 +10,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(dashboard)/layout.js"
     ],
-    "/(dashboard)/admin/attendlist/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(dashboard)/admin/attendlist/page.js"
-    ],
-    "/(dashboard)/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(dashboard)/page.js"
-    ],
     "/(dashboard)/attend/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -30,10 +20,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(dashboard)/notice/page.js"
     ],
-    "/(dashboard)/admin/sendsms/page": [
+    "/(dashboard)/admin/attendlist/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(dashboard)/admin/sendsms/page.js"
+      "static/chunks/app/(dashboard)/admin/attendlist/page.js"
     ],
     "/(dashboard)/qna/page": [
       "static/chunks/webpack.js",

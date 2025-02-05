@@ -7,7 +7,7 @@ export default function NoticePage() {
 
   return (
     <Typography>
-      Welcome to the Toolpad orders!
+      공지사항페이지
     </Typography>
   );
 }

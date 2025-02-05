@@ -42,7 +42,7 @@ if ( authority === 'admin' ){
       children: [
         {
           segment: 'attendlist',
-          title: '봉사자출석관리',
+          title: '봉사자관리',
           icon: <Checklist />,
         },
         {
@@ -97,7 +97,7 @@ if ( authority === 'admin' ){
 }
 
 const BRANDING = {
-  title: '2027 World Youth Day 봉사자관리 프로그램',
+  title: '2027 WYD 봉사자관리 프로그램',
 };
 
 export default function RootLayout(props: { children: React.ReactNode }) {

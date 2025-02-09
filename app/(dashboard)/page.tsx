@@ -16,10 +16,10 @@ export default function HomePage() {
   };
 
   return (    
-    <Box sx={{ backgroundImage:`url(https://wydseoul.org/img/main.png)`,width: '100%',height:'100%' }}>
+    <Box sx={{ width: '100%',height:'100%',backgroundSize:'100%' }}>
       <Stack spacing={5} alignItems="center">
-        <Typography variant="h4" gutterBottom>
-            2027 세계청년대회 봉사자 관리 프로그램에 오신것을 환영합니다.
+        <Typography align="center" color="info" variant="h4" gutterBottom>
+            2027 세계청년대회 봉사자 여러분 환영합니다.
         </Typography>
 
         <Typography variant="h2" gutterBottom>

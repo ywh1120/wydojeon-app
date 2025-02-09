@@ -5,6 +5,7 @@ import { Dashboard, BackHand, Campaign, AdminPanelSettings, QuestionAnswer, Sms,
 import LinearProgress from '@mui/material/LinearProgress'
 import type { Navigation } from '@toolpad/core/AppProvider';
 import theme from '../theme';
+import { CustomSnackbar } from '@/component/noticebar';
 
 let authority: String = 'admin'
 let NAVIGATION: Navigation = []
@@ -116,7 +117,9 @@ export default function RootLayout(props: { children: React.ReactNode }) {
               theme={theme}
             >
               {props.children}
+              <CustomSnackbar />  
             </NextAppProvider>
+            
             </React.Suspense>
           </AppRouterCacheProvider>
         

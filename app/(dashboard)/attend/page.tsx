@@ -1,14 +1,13 @@
 'use client'
 import * as React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { doc, setDoc, getDoc } from "@firebase/firestore";
 import dbmodule from "@/dbinfo/firebasedb";
-import NoticeBar from '@/component/noticebar';
+import { SnackbarContext } from '@/context/snackbarcontext';
 
 type attendType = {
   name : string,
@@ -43,9 +42,9 @@ export default function AttendPage() {
     attenddate : dateString};
 
   const variableName = 'myVariable';
-  dynamicVariables[variableName] = 'Hello, TypeScript!';
+  //dynamicVariables[variableName] = 'Hello, TypeScript!';
 
-  console.log(dynamicVariables.myVariable); // 출력: Hello, TypeScript!
+  //console.log(dynamicVariables.myVariable); // 출력: Hello, TypeScript!
   
   let attendData : attendType = 
   {
@@ -56,9 +55,7 @@ export default function AttendPage() {
     attendyn : '',
     attenddate : dateString
   };
-  const noticebarOpen = () =>{
-    setSnackbarOpen(true)
-  }
+  
   useEffect(() => {
     async function getdocument() {
       let attend : boolean = false
@@ -89,10 +86,10 @@ export default function AttendPage() {
       if((attend && attendstart)){
         setAttendActive(true)
         setCancelActive(false)
-      }else if((!attend && attendstart) || !c.exists()){
+      }else if((!attend && attendstart) && !c.exists()){
         setAttendActive(false)
         setCancelActive(false)
-      }else if(!attendstart){
+      }else if(!attendstart || !d.exists()){
         setAttendActive(true)
         setCancelActive(true)
         setAttendletter('출석기간이 아닙니다.')
@@ -102,7 +99,8 @@ export default function AttendPage() {
     }
     getdocument()
   }, []);
-  
+  const { showSnackbar } = useContext(SnackbarContext)
+
   const onClickAttendButton = async (e: any) => {
     
     attendData.name = '이원호';
@@ -113,9 +111,10 @@ export default function AttendPage() {
     attendData.attendyn = 'Y';
     setAttendActive(true)
     setCancelActive(false)
-    noticebarOpen()
     
+    setSnackbarOpen(true)
     await setDoc(doc(dbmodule, "attend", dateString),{attendData})
+    showSnackbar('출석하였습니다.')
   }
 
   const onClickCancelButton = async (e: any) => {
@@ -129,8 +128,9 @@ export default function AttendPage() {
     setAttendActive(false)
     setCancelActive(true)
     await setDoc(doc(dbmodule, "attend", dateString),{attendData})
+    showSnackbar('불참하였습니다.')
   }
-
+  
   return (
     <Box sx={{ width: '100%' }}>
       <form onSubmit={(event) => event.preventDefault()}>
@@ -138,11 +138,10 @@ export default function AttendPage() {
           { attend_letter }
         </Typography>
         <Stack spacing={2}>
-          <Button variant="contained" color="success" value="1" onClick={onClickAttendButton} disabled={attendactive}>참석</Button>
-          <Button variant="contained" color="error" value="2" onClick={onClickCancelButton} disabled={cancelactive}>불참</Button>
+          <Button variant="contained" color="success" onClick={onClickAttendButton} disabled={attendactive}>참석</Button>
+          <Button variant="contained" color="error" onClick={onClickCancelButton} disabled={cancelactive}>불참</Button>
         </Stack>
       </form>
-      <NoticeBar visible={snackbarOpen}/>
 
     </Box>
     

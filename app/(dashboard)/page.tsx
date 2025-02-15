@@ -8,12 +8,6 @@ import Button from '@mui/material/Button';
 import FormDialog from '@/component/formdialog';
 
 export default function HomePage() {
-  const [isDialog, setIsDialog] = useState(false);
-
-  const onDialog = () => {
-    setIsDialog(true);
-    
-  };
 
   return (    
     <Box sx={{ width: '100%',height:'100%',backgroundSize:'100%' }}>

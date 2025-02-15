@@ -4,8 +4,8 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { Dashboard, BackHand, Campaign, AdminPanelSettings, QuestionAnswer, Sms, Checklist } from '@mui/icons-material';
 import LinearProgress from '@mui/material/LinearProgress'
 import type { Navigation } from '@toolpad/core/AppProvider';
-import theme from '../theme';
-import { CustomSnackbar } from '@/component/noticebar';
+import theme from '@/theme';
+
 
 let authority: String = 'admin'
 let NAVIGATION: Navigation = []
@@ -117,7 +117,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
               theme={theme}
             >
               {props.children}
-              <CustomSnackbar />  
+
             </NextAppProvider>
             
             </React.Suspense>
